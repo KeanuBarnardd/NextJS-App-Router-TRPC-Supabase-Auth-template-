@@ -1,0 +1,1 @@
+# nextjs-15-app-router-supabase-auth-template
