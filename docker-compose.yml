@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: activity_line_db  # Updated database name
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: starscream778
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+
+  # Your application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_HOST: db  # Use 'db' as the host (Docker service name)
+      DB_NAME: activity_line_db  # Updated database name
+      DB_USER: postgres
+      DB_PASSWORD: starscream778
+      DB_PORT: 5432
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy  # Ensures app starts only when DB is ready
+
+      
+
+# Persist PostgreSQL data
+volumes:
+  postgres_data:
