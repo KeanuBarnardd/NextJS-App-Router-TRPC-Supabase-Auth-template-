@@ -1,13 +1,8 @@
-'use client'
+import HomePageContent from "@/components/home-page-content";
+import { trpcServer } from "@/trpc/server";
 
-import { trpc } from "@/trpc/client";
+export default async function Home() {
+	void trpcServer.hello.prefetch();
 
-export default function Home() {
-  const greeting = trpc.hello.useQuery({ text: "world" });
-
-  return (
-    <div>
-     {greeting.data?.greeting}
-    </div>
-  );
+	return <HomePageContent />;
 }
