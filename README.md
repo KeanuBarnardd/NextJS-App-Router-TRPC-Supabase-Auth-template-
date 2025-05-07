@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextJS 15 App Router TRPC Supabase Auth Template
+
+This is a super simple starter template using Next.js 15, tRPC, Supabase Auth, and Tailwind CSS. It’s meant to be a clean base with the basics set up — auth, route protection, and type-safe APIs.
+
+Nothing fancy, just a solid starting point so you can jump straight into building and add whatever packages or features you need.
+
+## Features
+
+- 🔐 **Authentication** - Complete auth flow with Supabase (login, signup, logout)
+- 🎯 **Type Safety** - End-to-end type safety with tRPC
+- 🚀 **Next.js 15** - Latest App Router features and optimizations
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 🔒 **Protected Routes** - Middleware-based route protection
+
+## Prerequisites
+
+- npm or yarn
+- Supabase account
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/nextjs-15-app-router-supabase-auth-template.git
+cd nextjs-15-app-router-supabase-auth-template
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Set up environment variables
+
+Copy the example environment file and update it with your Supabase credentials:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Update the following variables in `.env.local`:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                    # Next.js app directory
+│   ├── (protected)/       # Protected routes
+│   ├── api/              # API routes
+│   ├── auth/             # Auth callback routes
+│   ├── error/            # Error handling
+│   ├── login/            # Login page
+│   ├── globals.css       # Global styles
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/           # React components
+├── public/              # Static assets
+├── supabase/           # Supabase client configuration
+├── trpc/               # tRPC configuration and routers
+├── middleware.ts       # Next.js middleware for auth
+└── next.config.ts      # Next.js configuration
+```
 
-## Learn More
+## Authentication Flow
 
-To learn more about Next.js, take a look at the following resources:
+1. **Sign Up**: Users can create an account with email and password
+2. **Login**: Existing users can log in with their credentials
+3. **Protected Routes**: Middleware ensures only authenticated users can access protected routes
+4. **Logout**: Users can securely log out of their session
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
 
-## Deploy on Vercel
+## Feel free to take this and do as you please 👌😁
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Made with
+- [Next.js](https://nextjs.org/)
+- [tRPC](https://trpc.io/)
+- [Supabase](https://supabase.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
